@@ -5,6 +5,7 @@
 
 {% for pizza in pizzas %}
     <div class="card">
+            <a href="{% url 'detail' pizza.id %}">
         <div class="card-content">
             <span class="card-title">{{ pizza.name }}</span>
             <p>Ingredients: {{ pizza.ingredients }}</p>
@@ -16,6 +17,7 @@
                 <p>Age: Kitten</p>
             {% endif %} -->
         </div>
+        </a>
     </div>
 {% endfor %}
 
