@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Pizza List</h1>
+
+{% for pizza in pizzas %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ pizza.name }}</span>
+            <p>Ingredients: {{ pizza.ingredients }}</p>
+            <p>Pizzeria: {{ pizza.pizzeria}}</p>
+            <p>Country: {{pizza.country}}</p>
+            <!-- {% if cat.age > 0 %}
+                <p>Age: {{ cat.age }}</p>
+            {% else %}
+                <p>Age: Kitten</p>
+            {% endif %} -->
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
