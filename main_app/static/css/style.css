@@ -2,13 +2,26 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  color: black;
+  
+}
+
+header nav {
+  background-color: orangered;
 }
 
 main {
   flex: 1 0 auto;
 }
 
-footer {
+footer.page-footer {
+  background-color: orangered;
   padding-top: 0;
-  text-align: right;
+  display: flex;
+  justify-content: space-around;
+}
+ul li a.brand-logo {
+  font-family: 'Chewy', cursive;
+  font-size: 25px;
+  /* color: #f13a59; */
 }
