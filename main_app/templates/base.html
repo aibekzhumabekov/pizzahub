@@ -10,7 +10,7 @@
     <title>Pizza Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <header class="navbar-fixed">
@@ -20,8 +20,9 @@
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;🍕Pizza Hub</a></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/pizzas">View All Pizzas</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'pizzas_create' %}">Add a Pizza</a></li>
+                    <li><a href="{% url 'index' %}">View All My Pizzas</a></li>
                 </ul>
             </div>
         </nav>
