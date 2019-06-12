@@ -6,4 +6,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('pizzas/', views.pizzas_index, name='index'),
     path('pizzas/<int:pizza_id>/', views.pizzas_detail, name='detail'),
+    path('pizzas/create/', views.PizzaCreate.as_view(), name='pizzas_create'),
+    path('pizzas/<int:pk>/update/', views.PizzaUpdate.as_view(), name='pizzas_update'),
+    path('pizzas/<int:pk>/delete/', views.PizzaDelete.as_view(), name='pizzas_delete'),
 ]
