@@ -9,7 +9,11 @@
         <p>Ingredients: {{ pizza.ingredients }}</p>
         <p>Pizzeria: {{ pizza.pizzeria}}</p>
         <p>Country: {{pizza.country}}</p>
-        
+    </div>
+    <div class="card-action">
+        <a href="{% url 'pizzas_update' pizza.id %}">Edit</a>
+        <a href="{% url 'pizzas_delete' pizza.id %}">Delete</a>
+      </div>
     </div>
 </div>
 {% endblock %}
