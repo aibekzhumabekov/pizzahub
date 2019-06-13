@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from .models import Pizza
+from .forms import OrderForm
 
 
 # Define the home view
@@ -29,10 +32,25 @@ def about(request):
   return render(request, 'about.html')
   # Add new view
 def pizzas_index(request):
-    pizzas = Pizza.objects.all()
-    return render(request, 'pizzas/index.html', { 'pizzas': pizzas })
+  pizzas = Pizza.objects.all()
+  return render(request, 'pizzas/index.html', { 'pizzas': pizzas })
 
 def pizzas_detail(request, pizza_id):
   pizza = Pizza.objects.get(id=pizza_id)
-  return render(request, 'pizzas/detail.html', { 'pizza': pizza })
+  order_form = OrderForm()
+  return render(request, 'pizzas/detail.html', {
+     'pizza': pizza, 'order_form': order_form 
+    })
+
+def add_order(request, pizza_id):
+	# create the ModelForm using the data in request.POST
+  form = OrderForm(request.POST)
+  # validate the form
+  if form.is_valid():
+    # don't save the form to the db until it
+    # has the pizza_id assigned
+    new_order = form.save(commit=False)
+    new_order.pizza_id = pizza_id
+    new_order.save()
+  return redirect('detail', pizza_id=pizza_id)
 
