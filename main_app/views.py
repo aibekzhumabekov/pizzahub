@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-from .models import Pizza
+from django.views.generic import ListView, DetailView
+from .models import Pizza, Ingredient
 from .forms import OrderForm
 
 
@@ -15,7 +14,7 @@ class PizzaCreate(CreateView):
 class PizzaUpdate(UpdateView):
   model = Pizza
   # Let's make it impossible to rename a pizza :)
-  fields = ['name', 'ingredients', 'pizzeria', 'country']
+  fields = ['name', 'descriptions', 'pizzeria', 'country']
 
 class PizzaDelete(DeleteView):
   model = Pizza
@@ -54,3 +53,20 @@ def add_order(request, pizza_id):
     new_order.save()
   return redirect('detail', pizza_id=pizza_id)
 
+class IngredientList(ListView):
+  model = Ingredient
+
+class IngredientDetail(DetailView):
+  model = Ingredient
+
+class IngredientCreate(CreateView):
+  model = Ingredient
+  fields = '__all__'
+
+class IngredientUpdate(UpdateView):
+  model = Ingredient
+  fields = ['name', 'color']
+
+class IngredientDelete(DeleteView):
+  model = Ingredient
+  success_url = '/Ingredients/'

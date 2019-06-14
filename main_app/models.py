@@ -1,26 +1,36 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
-from django.contrib.auth.models import User
+
 
 MEALS = (
     ('B', 'Breakfast'),
     ('L', 'Lunch'),
     ('D', 'Dinner')
 )
+class Ingredient(models.Model):
+  name = models.CharField(max_length=50)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('ingredients_detail', kwargs={'pk': self.id})
 
 # Create your models here.
 class Pizza(models.Model):
   name = models.CharField(max_length=100)
-  ingredients = models.TextField(max_length=300)
+  descriptions = models.TextField(max_length=300)
   pizzeria = models.CharField(max_length=100)
   country = models.CharField(max_length=100)
+  
 
   def __str__(self):
-        return self.name
+    return self.name
 
   def get_absolute_url(self):
-        return reverse('detail', kwargs={'pizza_id': self.id})
+    return reverse('detail', kwargs={'pizza_id': self.id})
 
   def order_for_today(self):
     return self.order_set.filter(date=date.today()).count() >= len(MEALS)

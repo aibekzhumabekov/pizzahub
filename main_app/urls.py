@@ -10,5 +10,10 @@ urlpatterns = [
     path('pizzas/<int:pk>/update/', views.PizzaUpdate.as_view(), name='pizzas_update'),
     path('pizzas/<int:pk>/delete/', views.PizzaDelete.as_view(), name='pizzas_delete'),
     path('pizzas/<int:pizza_id>/add_order/', views.add_order, name='add_order'),
+    path('ingredients/', views.IngredientList.as_view(), name='ingredients_index'),
+    path('ingredients/<int:pk>/', views.IngredientDetail.as_view(), name='ingredients_detail'),
+    path('ingredients/create/', views.IngredientCreate.as_view(), name='ingredients_create'),
+    path('ingredients/<int:pk>/update/', views.IngredientUpdate.as_view(), name='ingredients_update'),
+    path('ingredients/<int:pk>/delete/', views.IngredientDelete.as_view(), name='ingredients_delete'),
  
 ]
