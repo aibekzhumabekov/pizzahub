@@ -20,8 +20,3 @@ footer.page-footer {
   display: flex;
   justify-content: space-around;
 }
-ul li a.brand-logo {
-  font-family: 'Lobster', cursive;
-  font-size: 35px;
-  /* color: #f13a59; */
-}

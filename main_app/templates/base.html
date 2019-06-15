@@ -10,24 +10,28 @@
     <title>Pizza Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
 </head>
 <body>
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
                 <ul>
-                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;🍕Pizza Hub</a></li>
+                    <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Pizza Hub</a></li>
                 </ul>
                 <ul class="right">
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'ingredients_create' %}">Add a Ingredient</a></li>
-                    <li><a href="{% url 'ingredients_index' %}">View All Ingredients</a></li>
-                    <li><a href="{% url 'pizzas_create' %}">Add a Pizza</a></li>
-                    <li><a href="{% url 'index' %}">View All My Pizzas</a></li>
-                </ul>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        {% if user.is_authenticated %}
+                          <li><a href="{% url 'ingredients_create' %}">Add a Ingredient</a></li>
+                          <li><a href="{% url 'ingredients_index' %}">View All Ingredients</a></li>
+                          <li><a href="{% url 'pizzas_create' %}">Add a Pizza</a></li>
+                          <li><a href="{% url 'index' %}">View All My Pizzas</a></li>
+                          <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        {% else %}
+                          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                          <li><a href="{% url 'login' %}">Log In</a></li>
+                        {% endif %}
+                      </ul>
             </div>
         </nav>
     </header>
