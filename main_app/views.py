@@ -42,6 +42,7 @@ def pizzas_index(request):
   pizzas = Pizza.objects.filter(user=request.user)
   return render(request, 'pizzas/index.html', { 'pizzas': pizzas })
 @login_required
+
 def pizzas_detail(request, pizza_id):
   pizza = Pizza.objects.get(id=pizza_id)
   ingredients_pizza_doesnt_have = Ingredient.objects.exclude(id__in = pizza.ingredients.all().values_list('id'))
