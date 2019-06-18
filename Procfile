@@ -1,1 +1,1 @@
-web: gunicorn pizzacollector.wsgi
+web: gunicorn pizzahub.wsgi
